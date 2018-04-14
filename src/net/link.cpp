@@ -190,6 +190,7 @@ Link* Link::accept(){
 		}
 	}
 
+	// avoid client side TIME_WAIT
 	struct linger opt = {1, 0};
 	int ret = ::setsockopt(client_sock, SOL_SOCKET, SO_LINGER, (void *)&opt, sizeof(opt));
 	if (ret != 0) {
